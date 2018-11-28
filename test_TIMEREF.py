@@ -18,7 +18,6 @@ def sleeper():
         time.sleep(num)
         print('After: %s\n' % time.ctime())
 
-
 try:
     sleeper()
 except KeyboardInterrupt:
