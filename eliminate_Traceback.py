@@ -15,5 +15,5 @@ except Exception as e:
    prog_n = os.path.basename(__file__)
    print("ERROR: {}!".format(e))
    print("{} is terminating ...".format(prog_n))
-   sys.tracbacklimit = 0
+   sys.tracebacklimit = 0
    sys.exit(1)
