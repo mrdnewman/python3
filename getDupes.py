@@ -11,7 +11,9 @@ getFile = input("Enter File Name: ")
 
 try:
    with open(getFile, 'r') as f:
-      c = Counter(c.strip().lower() for c in f)
+
+          #expression for items in function if conditional
+      c = Counter(c.strip().lower() for c in f if c.strip().lower())
 
       count = 0
       print("\nDuplicate List")
@@ -33,4 +35,4 @@ except FileNotFoundError:
 
 else:
    print("\nThanks for playing -- Good Bye!")
-~                                             
+
