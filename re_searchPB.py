@@ -26,6 +26,8 @@ else:
          matches = pattern.finditer(content)
          for match in matches:
             print(match)
+            
+      f.close()
 
    except Exception as e2:
       print("Error: {} ...".format(e2))
