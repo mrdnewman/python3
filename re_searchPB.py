@@ -21,7 +21,7 @@ else:
       with open('phonebook.txt', 'r') as f:
 
          content = f.read()
-         pattern = compile(r'\d\d\d.\d\d\d.\d\d\d\d')
+         pattern = compile(r'\d{3}.\d{3}.\d{4}')
 
          matches = pattern.finditer(content)
          for match in matches:
