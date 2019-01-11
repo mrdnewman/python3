@@ -13,3 +13,24 @@ for root, dirs, files in os.walk(myPath):
    for file in files:
       if file.endswith(".py"):
          print(os.path.join(root, file))
+         
+         
+# Get Dupes in File ...
+import os
+from collections import Counter
+
+os.system('clear')
+getFile = input("\nEnter File: ")
+
+
+with open(getFile, 'r') as f:
+    c = Counter(c.strip().lower() for c in f if c.strip().lower())
+    print("____________________\n")
+
+    for item in c:
+        if c[item]>1:
+            print(item + " -->  " + str(int(c[item])) + " Dupes ...")
+
+print("____________________\n")
+f.close()
+
