@@ -1,8 +1,10 @@
 
 from subprocess import Popen, PIPE
+import subprocess
 import os
 import sys
 import importlib.util
+import pkgutil
 
 os.system('clear')
 
@@ -12,7 +14,6 @@ def run_cmd(cmd):
     rt=sp.wait()
     out,err=sp.communicate()
     return out
-
 
 def is_root():
     if os.getuid()==0:
@@ -31,17 +32,19 @@ except Exception as e:
     print(e)
     print("Please rectify the error and try again ...")
 
+
 pkg_name = 'atop'
+status = subprocess.getstatusoutput("dpkg-query -W -f='${Status}' " + pkg_name)
 
-try:
-    spec= importlib.util.find_spec(pkg_name)
-    if spec is None:
-        print(pkg_name + " is NOT installed ...")
-        #sys.exit(1)
-        print("Hold on ... Installing {}".format(pkg_name))
-        run_cmd('apt-get install %s' % (pkg_name))
+if status[0]==0:
+    print(pkg_name + " installed -- nothing to do ...")
+else:
+    print("Installing: " + pkg_name)
+    try:
+       run_cmd('apt-get install %s' % (pkg_name))
+       print(pkg_name + " Installed successfully ...")
 
-except Exception as e:
-    print(e)
-    print("Please rectify error ...")
-    sys.exit(3)
+    except Exception as e:
+       print(e)
+       print("Error installing package  ...")
+       sys.exit(3)
